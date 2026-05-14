@@ -31,8 +31,12 @@ export const createBouteille = async (data) => {
     return res.data
 }
 
+export const updateBouteille = async (id, data) => {
+    const res = await api.put(`/bouteilles/${id}`, data)
+    return res.data
+}
+
 export const uploadPhoto = async (id, file) => {
-    console.log('Uploading photo for bouteille id:', id)
     const formData = new FormData()
     formData.append('photo', file)
     const res = await api.post(`/bouteilles/${id}/photo`, formData)

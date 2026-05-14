@@ -6,6 +6,7 @@ import Filtres        from '../components/Filtres'
 
 export default function CavePage({ onLogout }) {
   const [bouteilles, setBouteilles] = useState([])
+  const [bouteilleEnEdition, setBouteilleEnEdition] = useState(null)
   const [loading,    setLoading]    = useState(true)
 
   const charger = async (filtres = {}) => {
@@ -13,11 +14,18 @@ export default function CavePage({ onLogout }) {
     try {
       const data = await getBouteilles(filtres)
       setBouteilles(data)
-    } catch (err) {
+    } 
+    catch (err) {
       console.error(err)
-    } finally {
+    } 
+    finally {
       setLoading(false)
     }
+  }
+
+  const handleAjout = () => {
+    setBouteilleEnEdition(null)
+    charger()
   }
 
   // Chargement initial
@@ -34,7 +42,9 @@ export default function CavePage({ onLogout }) {
 
         {/* Colonne gauche — formulaire */}
         <aside style={styles.aside}>
-          <BouteilleForm onAjout={() => charger()} />
+          <BouteilleForm 
+            bouteille={bouteilleEnEdition}
+            onAjout={handleAjout} />
         </aside>
 
         {/* Colonne droite — liste */}
@@ -49,7 +59,11 @@ export default function CavePage({ onLogout }) {
 
           <div style={styles.grille}>
             {bouteilles.map(b => (
-              <BouteilleCard key={b.id} bouteille={b} />
+              <BouteilleCard 
+                key={b.id} 
+                bouteille={b}
+                onModifier={() => setBouteilleEnEdition(b)}  
+              />
             ))}
           </div>
         </main>

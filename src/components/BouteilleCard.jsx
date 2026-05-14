@@ -1,4 +1,4 @@
-export default function BouteilleCard({ bouteille }) {
+export default function BouteilleCard({ bouteille, onModifier }) {
   const { nom, cepage, region, millesime, note, photo_url } = bouteille
 
   return (
@@ -18,6 +18,9 @@ export default function BouteilleCard({ bouteille }) {
         </div>
         {note && <div style={styles.note}>{'★'.repeat(Math.round(note / 4))} {note}/20</div>}
       </div>
+      <button onClick={onModifier} style={styles.btnModifier}>
+        Modifier
+      </button>
     </div>
   )
 }
@@ -45,5 +48,15 @@ const styles = {
     fontSize: '0.75rem',
     border: '1px solid #5c2a2a'
   },
-  note: { color: '#c8a060', fontSize: '0.85rem' }
+  note: { color: '#c8a060', fontSize: '0.85rem' },
+  btnModifier: {
+    margin: '8px 14px 14px',
+    padding: '6px 12px',
+    borderRadius: '8px',
+    border: '1px solid #5c2a2a',
+    background: 'transparent',
+    color: '#9a7a6a',
+    cursor: 'pointer',
+    fontSize: '0.8rem'
+  }
 }

@@ -1,16 +1,57 @@
-# React + Vite
+# Cave à Vins — Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React web app to manage a personal wine collection, connected to a REST API with JWT authentication.
 
-Currently, two official plugins are available:
+## Live
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[cave-a-vins-front.vercel.app](https://cave-a-vins-front.vercel.app)
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React + Vite** — front-end framework
+- **Axios** — HTTP client with JWT interceptor
+- **Deployed on Vercel**
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- JWT authentication (register / login)
+- Browse your wine collection with live filters (cépage, région, note min)
+- Add a bottle with name, cépage, région, millésime and rating
+- Upload a photo for each bottle
+- Persistent login via localStorage token
+
+## Project structure
+
+```
+src/
+├── api/
+│   └── bouteilles.api.js   # all API calls, JWT injected automatically
+├── components/
+│   ├── BouteilleCard.jsx    # single bottle display
+│   ├── BouteilleForm.jsx    # add bottle form
+│   └── Filtres.jsx          # filter bar
+├── pages/
+│   ├── LoginPage.jsx
+│   └── CavePage.jsx         # main page
+└── App.jsx
+```
+
+## Local setup
+
+```bash
+git clone https://github.com/bamarcel/cave-a-vins-front
+cd cave-a-vins-front
+npm install
+cp .env.example .env   # set VITE_API_URL=http://localhost:3000
+npm run dev
+```
+
+**Required environment variables:**
+
+```
+VITE_API_URL=http://localhost:3000
+```
+
+## Related
+
+Back-end repository: [cave-a-vins-back](https://github.com/bamarcel/cave-a-vins-back)

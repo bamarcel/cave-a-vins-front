@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { login } from '../api/bouteilles.api'
 
-export default function LoginPage({ onLogin }) {
+export default function LoginPage({ onLogin, onGoRegister }) {
     const [email, setEmail]       = useState('')
     const [password, setPassword] = useState('')
     const [erreur, setErreur]     = useState('')
@@ -47,6 +47,13 @@ export default function LoginPage({ onLogin }) {
                         Se connecter
                     </button>
                 </form>
+
+                <p style={styles.lien}>
+                    Pas encore de compte ?{' '}
+                    <span onClick={onGoRegister} style={styles.lienSpan}>
+                        Créer un compte
+                    </span>
+                </p>
             </div>
         </div>
     )
@@ -89,5 +96,7 @@ const styles = {
         cursor: 'pointer',
         marginTop: '6px'
     },
-    erreur: { color: '#e57373', fontSize: '0.85rem', margin: 0 }
+    erreur: { color: '#e57373', fontSize: '0.85rem', margin: 0 },
+    lien:     { color: '#9a7a6a', fontSize: '0.85rem', textAlign: 'center', marginTop: '1.5rem' },
+    lienSpan: { color: '#e8c4a0', cursor: 'pointer', textDecoration: 'underline' }
 }

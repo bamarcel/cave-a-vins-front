@@ -1,19 +1,21 @@
 import { useState } from 'react'
-import LoginPage from './pages/LoginPage'
-import CavePage  from './pages/CavePage'
+import LoginPage    from './pages/LoginPage'
+import RegisterPage from './pages/RegisterPage'
+import CavePage     from './pages/CavePage'
 
 export default function App() {
-  const [connecte, setConnecte] = useState(
-    !!localStorage.getItem('token')  // true si un token existe déjà
+  const [page, setPage] = useState(
+    localStorage.getItem('token') ? 'cave' : 'login'
   )
 
-  const handleLogin  = () => setConnecte(true)
-  const handleLogout = () => {
+  const handleLogin    = () => setPage('cave')
+  const handleRegister = () => setPage('cave')
+  const handleLogout   = () => {
     localStorage.removeItem('token')
-    setConnecte(false)
+    setPage('login')
   }
 
-  return connecte
-    ? <CavePage  onLogout={handleLogout} />
-    : <LoginPage onLogin={handleLogin}  />
+  if (page === 'cave')     return <CavePage     onLogout={handleLogout} />
+  if (page === 'register') return <RegisterPage onRegister={handleRegister} onGoLogin={() => setPage('login')} />
+  return                          <LoginPage    onLogin={handleLogin}    onGoRegister={() => setPage('register')} />
 }

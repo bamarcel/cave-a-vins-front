@@ -16,7 +16,7 @@ React web app to manage a personal wine collection, connected to a REST API with
 
 - JWT authentication (register / login)
 - Browse your wine collection with live filters (cépage, région, note min)
-- Add a bottle with name, cépage, région, millésime and rating
+- Add or update a bottle with name, cépage, région, millésime and rating
 - Upload a photo for each bottle
 - Persistent login via localStorage token
 
@@ -31,6 +31,7 @@ src/
 │   ├── BouteilleForm.jsx    # add bottle form
 │   └── Filtres.jsx          # filter bar
 ├── pages/
+│   ├── RegisterPage.jsx
 │   ├── LoginPage.jsx
 │   └── CavePage.jsx         # main page
 └── App.jsx

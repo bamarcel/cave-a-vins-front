@@ -1,26 +1,26 @@
-# Cave à Vins — Front-end
+# 🍷 Cave à Vins — Front-end
 
 React web app to manage a personal wine collection, connected to a REST API with JWT authentication.
 
-## Live
+## 🌐 Live
 
 [cave-a-vins-front.vercel.app](https://cave-a-vins-front.vercel.app)
 
-## Stack
+## 🛠 Stack
 
 - **React + Vite** — front-end framework
 - **Axios** — HTTP client with JWT interceptor
 - **Deployed on Vercel**
 
-## Features
+## ✨ Features
 
-- JWT authentication (register / login)
-- Browse your wine collection with live filters (cépage, région, note min)
-- Add or update a bottle with name, cépage, région, millésime and rating
-- Upload a photo for each bottle
-- Persistent login via localStorage token
+- 🔐 JWT authentication (register / login)
+- 🔍 Browse your wine collection with live filters (cépage, région, note min)
+- 🍾 Add or update a bottle with name, cépage, région, millésime and rating
+- 📷 Upload a photo for each bottle
+- 💾 Persistent login via localStorage token
 
-## Project structure
+## 📁 Project structure
 
 ```
 src/
@@ -28,7 +28,7 @@ src/
 │   └── bouteilles.api.js   # all API calls, JWT injected automatically
 ├── components/
 │   ├── BouteilleCard.jsx    # single bottle display
-│   ├── BouteilleForm.jsx    # add bottle form
+│   ├── BouteilleForm.jsx    # add / edit bottle form
 │   └── Filtres.jsx          # filter bar
 ├── pages/
 │   ├── RegisterPage.jsx
@@ -37,7 +37,7 @@ src/
 └── App.jsx
 ```
 
-## Local setup
+## 🚀 Local setup
 
 ```bash
 git clone https://github.com/bamarcel/cave-a-vins-front
@@ -53,6 +53,6 @@ npm run dev
 VITE_API_URL=http://localhost:3000
 ```
 
-## Related
+## 🔗 Related
 
 Back-end repository: [cave-a-vins-back](https://github.com/bamarcel/cave-a-vins-back)
